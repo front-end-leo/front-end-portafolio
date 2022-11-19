@@ -1,0 +1,114 @@
+@use 'variables';
+
+@mixin desktop-view ($width, $height: unset, $font-size:unset,){
+    @media (min-width: 1440px){
+        width: $width;
+        height: $height;
+        font-size: $font-size;
+    }
+}
+
+@mixin button($bg-color, $br-color, $font-color, $width, $height, $bradius, $center){
+    background-color: $bg-color;
+    border: none;
+    border: 1px solid $br-color;
+    border-radius: $bradius;
+    display: block;
+    color: $font-color;
+    width: $width;
+    height: $height;
+
+    @if $center == true{
+        margin: 0 auto;
+    }
+}
+
+@mixin button-hover($bg-color){
+    &:hover{
+        cursor: pointer;
+        background-color: $bg-color;
+        color: variables.$white ;
+    }
+}
+@mixin flexsection{
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 180px;
+    
+    .img-container__ilustration{
+        width: 246px;
+        display: block;
+        margin: 0 auto;
+    }
+    .description{
+        &__tittle{
+            font-family:variables.$headings-font;
+            font-size: 1.2em;
+            text-align: center;
+            margin-bottom: 12px;
+            
+        }
+        &__content{
+            margin:0 auto;
+            text-align: center;
+            font-size: .9em;
+            width: 330px;
+        }
+
+    }
+}
+@mixin flexSection-desktop($direction:row) {
+    @media (min-width: 1440px){
+        flex-direction: row;
+        justify-content: space-around;
+        flex-direction: $direction ;
+        height: 800px;
+        .img-container__ilustration{
+            width: 527px;
+        }
+        .description{
+            &__tittle{
+                font-size: 2.3em;
+                text-align: left;
+            }
+            &__content{
+                text-align: left;
+                font-size: 1em;
+                width: 495px;
+    
+            }
+        }
+    }
+}
+@mixin section-stats-desktop($logo){
+    @media (min-width: 1440px){
+        &__logo{
+            width: $logo;
+        }
+        &__stats{
+            font-size: 6em;
+        }
+    
+        &__description{
+            font-size: 1.5em;
+        }
+    }
+}
+
+@mixin stats($logo){
+    margin-bottom: 98px;
+    &__logo{
+        width: $logo;
+    }
+    &__stats{
+        font-size: 4em;
+    }
+
+    &__description{
+        font-size: .8em;
+        text-align: center;
+        @content
+    }
+}
